@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get 'posts/new', to: 'posts#new'# ruta collection
   post 'posts', to: 'posts#create'
 
-  get 'posts/:id', to: 'posts#show' # ruta member
+  get 'posts/:id', to: 'posts#show', as: 'posts_show' # ruta member
+  get 'posts/:id/edit', to: 'posts#edit', as: 'posts_edit'
+  patch 'posts/:id', to: 'posts#update', as: 'post'
+
 end

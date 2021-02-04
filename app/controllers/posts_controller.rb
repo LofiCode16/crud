@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
+    before_action :set_post, only: [:show, :edit, :update]
 
     def index
         @posts = Post.all # SELECT * FROM posts;
     end
 
-    def show
-        @post = Post.find(params[:id]) # SELECT * FROM posts WHERE id = ? ;
+    def show # SELECT * FROM posts WHERE id = ? ;
     end
 
     def new
@@ -13,10 +13,30 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(title: params[:post][:title], content: params[:post][:content])
+        @post = Post.new(post_params)
 
         @post.save
 
         redirect_to posts_index_path
     end
+
+    def edit
+    end
+
+    def update
+        @post.update(post_params)
+
+        redirect_to posts_index_path
+    end
+
+    private
+    def set_post
+        @post = Post.find(params[:id])
+    end
+
+    def post_params
+        params.require(:post).permit(:title, :content)
+    end
+
 end
+

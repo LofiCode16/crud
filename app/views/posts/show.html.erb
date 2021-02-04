@@ -1,3 +1,7 @@
 <h1>este es el show</h1>
 
-<%= @post %>
+<div>
+    <h2><%= @post.title %></h2>
+    <p><%= @post.content %></p>
+    <%= link_to "editar", posts_edit_path(@post.id) %>
+</div>
