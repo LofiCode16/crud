@@ -6,5 +6,6 @@
         <p><%= post.content %></p>
         <%= link_to 'ver', posts_show_path(post.id) %>
         <%= link_to 'editar', posts_edit_path(post.id) %>
+        <%= link_to 'borrar', posts_destroy_path(post.id), method: :delete, data: {confirm: 'Estas seguro?'} %>
     </div>
 <% end %>
